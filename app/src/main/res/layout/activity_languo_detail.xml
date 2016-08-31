@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.amelendez.lgo.activities.LanguoDetailActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/baseVertical"
+        android:weightSum="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="63dp"
+                android:layout_height="match_parent"
+                android:text="Term"
+                android:id="@+id/detail_termLabelTextView"
+                android:textColor="@color/button_material_dark"
+                android:textSize="18dp"
+                android:layout_gravity="center_vertical"
+                android:textAlignment="gravity"
+                android:textStyle="italic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hits : "
+                android:id="@+id/detail_hitsLabel"
+                android:textColor="@color/button_material_dark"
+                android:textSize="18dp"
+                android:textAlignment="gravity"
+                android:textStyle="italic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:id="@+id/detail_hitsTextView"
+                android:textColor="@color/button_material_dark"
+                android:textSize="18dp"
+                android:layout_weight="0.05"
+                android:textAlignment="gravity"
+                android:textStyle="italic" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editButton"
+                android:src="@mipmap/ic_edit"
+                android:background="#ffffff"
+                android:foregroundGravity="top|right" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lekker"
+            android:id="@+id/detail_termTextView"
+            android:textSize="28dp"
+            android:textColor="@color/colorPrimary"
+            android:singleLine="false"
+            android:layout_marginTop="10dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/underTermSpace"
+            android:background="#e23232"
+            android:layout_weight="0.1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Definition"
+            android:id="@+id/detail_definitionLabelTextView"
+            android:textColor="@color/button_material_dark"
+            android:textSize="18dp"
+            android:layout_weight="0.04"
+            android:textAlignment="gravity"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tasty or yummi"
+            android:id="@+id/detail_definitionTextView"
+            android:textSize="28dp"
+            android:textColor="@android:color/black"
+            android:singleLine="false" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/space"
+            android:background="#e23232"
+            android:layout_weight="0.1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Example"
+            android:id="@+id/detail_exampleLabelTextView"
+            android:textColor="@color/button_material_dark"
+            android:textSize="18dp"
+            android:layout_weight="0.04"
+            android:textAlignment="gravity"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Appeltaart is heel lekker!"
+            android:id="@+id/detail_exampleTextView"
+            android:textSize="24dp"
+            android:textColor="@android:color/holo_blue_light"
+            android:singleLine="false" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/space2"
+            android:background="#e23232"
+            android:layout_weight="0.1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Knowledge Rating"
+            android:id="@+id/detail_levelLabelTextView"
+            android:textColor="@color/button_material_dark"
+            android:textSize="18dp"
+            android:layout_weight="0.04"
+            android:textAlignment="gravity"
+            android:textStyle="italic" />
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_levelRatingBar"
+            android:numStars="3"
+            android:rating="0"
+            android:isIndicator="true"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
