@@ -34,12 +34,19 @@ public class MainActivity extends AppCompatActivity {
         LoadItems();
     }
 
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        LoadItems();
+    }
+
     public void addLanguoAction(View view) {
         Intent i = new Intent(getApplicationContext(), NewLanguoActivity.class);
         startActivity(i);
     }
 
-    private void LoadItems()
+    public void LoadItems()
     {
         List<Languo> languos = storageProvider.GetAllLanguos();
         RenderListView(languos);
@@ -53,13 +60,19 @@ public class MainActivity extends AppCompatActivity {
         }
         adapter = new LanguoListAdapter(this, languos);
         ListView listView = (ListView) findViewById(R.id.main_listView);
-        listView.setAdapter(adapter);
+
+        if(listView != null)
+        {
+            // TODO: handle this via exception
+            listView.setAdapter(adapter);
+        }
     }
 
     // DEV Options ---------------------------------------------------------------------------------
     public void devOps(View v)
     {
-        storageProvider.ClearAll(this);
-        Log.d("DevOps", "Cleared database");
+        // TODO: clean this up... already reported in activity to move this into sidemenu.
+        // storageProvider.ClearAll(this);
+        // Log.d("DevOps", "Cleared database");
     }
 }

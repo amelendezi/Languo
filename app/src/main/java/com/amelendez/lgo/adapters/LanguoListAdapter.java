@@ -117,16 +117,20 @@ public class LanguoListAdapter extends ArrayAdapter<Languo> {
     {
         final Context context = v.getContext();
         final String termKey = GetTermKey(v);
+        final ListView listView = (ListView)v.getParent().getParent();
+        final View v1= v;
 
+        // TODO: improve this code
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
         alertDialog.setMessage("Are you sure you would like to delete the item?");
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 storageProvider.DeleteLanguo(termKey);
-                Intent intent;
-                intent = new Intent(getContext(), MainActivity.class);
-                context.startActivity(intent);
+                LanguoListAdapter adapter = (LanguoListAdapter) listView.getAdapter();
+                int postition = listView.getPositionForView(v1);
+                adapter.remove(adapter.getItem(postition));
+                adapter.notifyDataSetChanged();
             }
         });
 
