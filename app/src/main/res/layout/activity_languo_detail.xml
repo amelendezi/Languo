@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,153 +7,166 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.amelendez.lgo.activities.LanguoDetailActivity">
+    android:orientation="vertical"
+    tools:context="com.amelendez.lgo.activities.DetailActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/detailEditButton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:src="@mipmap/ic_edit"
+            android:background="@android:color/transparent" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lekker"
+        android:id="@+id/detailTermTextView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="28dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tasty, yummi or a fun or good situation"
+        android:id="@+id/detailDefinitionTextView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/black"
+        android:textSize="24dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <View android:id="@+id/primerdivisor1"
+        android:layout_height="2dp"
+        android:layout_width="fill_parent"
+        android:background="@android:color/darker_gray" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Use example"
+        android:id="@+id/textView3"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/tertiary_text_light"
+        android:textSize="18dp"
+        android:textStyle="italic" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ik vind dat appeltaart is heel lekker!"
+        android:id="@+id/detailExampleTextView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/switch_thumb_disabled_material_dark"
+        android:textSize="20dp"
+        android:textStyle="italic" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_gravity="center_horizontal" />
+
+    <View android:id="@+id/primerdivisor2"
+        android:layout_height="2dp"
+        android:layout_width="fill_parent"
+        android:background="@android:color/darker_gray" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&quot;It&apos;s hard to remember the meaning.&quot;"
+        android:id="@+id/detailLevelMessageTextView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        android:textStyle="italic" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_gravity="center_horizontal" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detailLevelRatingBar"
+        android:numStars="4"
+        android:stepSize="1"
+        android:onClick="updateLevelAction" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <View android:id="@+id/primerdivisor3"
+        android:layout_height="2dp"
+        android:layout_width="fill_parent"
+        android:background="@android:color/darker_gray" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
 
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/baseVertical"
-        android:weightSum="1"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="63dp"
-                android:layout_height="match_parent"
-                android:text="Term"
-                android:id="@+id/detail_termLabelTextView"
-                android:textColor="@color/button_material_dark"
-                android:textSize="18dp"
-                android:layout_gravity="center_vertical"
-                android:textAlignment="gravity"
-                android:textStyle="italic" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hits : "
-                android:id="@+id/detail_hitsLabel"
-                android:textColor="@color/button_material_dark"
-                android:textSize="18dp"
-                android:textAlignment="gravity"
-                android:textStyle="italic" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/detail_hitsTextView"
-                android:textColor="@color/button_material_dark"
-                android:textSize="18dp"
-                android:layout_weight="0.05"
-                android:textAlignment="gravity"
-                android:textStyle="italic" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/editButton"
-                android:src="@mipmap/ic_edit"
-                android:background="#ffffff"
-                android:foregroundGravity="top|right" />
-        </LinearLayout>
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lekker"
-            android:id="@+id/detail_termTextView"
-            android:textSize="28dp"
-            android:textColor="@color/colorPrimary"
-            android:singleLine="false"
-            android:layout_marginTop="10dp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/underTermSpace"
-            android:background="#e23232"
-            android:layout_weight="0.1" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Definition"
-            android:id="@+id/detail_definitionLabelTextView"
-            android:textColor="@color/button_material_dark"
-            android:textSize="18dp"
-            android:layout_weight="0.04"
-            android:textAlignment="gravity"
-            android:textStyle="italic" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="tasty or yummi"
-            android:id="@+id/detail_definitionTextView"
-            android:textSize="28dp"
+            android:text="Times read: "
+            android:id="@+id/textView7"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
             android:textColor="@android:color/black"
-            android:singleLine="false" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/space"
-            android:background="#e23232"
-            android:layout_weight="0.1" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Example"
-            android:id="@+id/detail_exampleLabelTextView"
-            android:textColor="@color/button_material_dark"
             android:textSize="18dp"
-            android:layout_weight="0.04"
-            android:textAlignment="gravity"
             android:textStyle="italic" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Appeltaart is heel lekker!"
-            android:id="@+id/detail_exampleTextView"
-            android:textSize="24dp"
-            android:textColor="@android:color/holo_blue_light"
-            android:singleLine="false" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/space2"
-            android:background="#e23232"
-            android:layout_weight="0.1" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Knowledge Rating"
-            android:id="@+id/detail_levelLabelTextView"
-            android:textColor="@color/button_material_dark"
+            android:text="0"
+            android:id="@+id/detailHitsTextView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:textColor="@android:color/black"
             android:textSize="18dp"
-            android:layout_weight="0.04"
-            android:textAlignment="gravity"
             android:textStyle="italic" />
-
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/detail_levelRatingBar"
-            android:numStars="3"
-            android:rating="0"
-            android:isIndicator="true"/>
-
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,63 +7,86 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.amelendez.lgo.activities.NewLanguoActivity">
+    tools:context="com.amelendez.lgo.activities.NewLanguoActivity"
+    android:orientation="vertical">
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/new_termEditText"
-        android:hint="term or sentence"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp" />
+        android:id="@+id/newTermEditText"
+        android:hint="term or phrase" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/new_definitionEditText"
-        android:hint="what does it mean?"
-        android:layout_below="@+id/new_termEditText"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="50dp" />
+        android:id="@+id/newDefinitionEditText"
+        android:hint="meaning" />
 
-    <Button
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save Languo"
-        android:id="@+id/new_saveLanguoButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:onClick="saveLanguoAction" />
+        android:layout_height="25dp" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/new_exampleEditText"
-        android:hint="provide and example of how its used?"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/newExampleEditText"
+        android:hint="provide example sentence (optional)" />
 
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/new_levelRatingBar"
-        android:stepSize="1"
-        android:numStars="3"
-        android:layout_below="@+id/new_rateLabel"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:clickable="true" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rate your familiarity."
-        android:id="@+id/new_rateLabel"
-        android:textSize="18dp"
-        android:layout_below="@+id/new_exampleEditText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:textColor="@color/colorAccent" />
+        android:text="Rate your degree of confidence"
+        android:id="@+id/newRateLabelTextView"
+        android:textSize="18dp" />
 
-</RelativeLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="14dp"
+        android:layout_gravity="center_horizontal" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/newRatingBar"
+            android:numStars="4" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/newWhatIsButton"
+            android:src="@mipmap/ic_whatis"
+            android:background="@android:color/transparent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="What is rating?" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:id="@+id/newSaveButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="saveLanguoAction" />
+    </RelativeLayout>
+
+</LinearLayout>

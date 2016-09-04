@@ -8,6 +8,7 @@ import com.amelendez.lgo.storage.dao.DaoSession;
 import com.amelendez.lgo.storage.dao.Languo;
 import com.amelendez.lgo.storage.dao.LanguoDao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StorageProvider {
@@ -46,7 +47,16 @@ public class StorageProvider {
     public List<Languo> GetAllLanguos()
     {
         List<Languo> languos = languoDao.queryBuilder().list();
+        if(languos == null)
+        {
+            return new ArrayList<Languo>();
+        }
         return languos;
+    }
+
+    public void UpdateLanguo(Languo updateLanguo)
+    {
+        languoDao.update(updateLanguo);
     }
 
     public void DeleteLanguo(String term)

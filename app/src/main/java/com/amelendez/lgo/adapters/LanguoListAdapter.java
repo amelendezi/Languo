@@ -5,18 +5,15 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.amelendez.lgo.activities.LanguoDetailActivity;
-import com.amelendez.lgo.activities.MainActivity;
+import com.amelendez.lgo.activities.DetailActivity;
 import com.amelendez.lgo.languo.R;
 import com.amelendez.lgo.storage.api.StorageProvider;
 import com.amelendez.lgo.storage.dao.Languo;
@@ -88,7 +85,7 @@ public class LanguoListAdapter extends ArrayAdapter<Languo> {
     private void GoToLanguoDetail(String termKey)
     {
         Intent intent;
-        intent = new Intent(getContext(), LanguoDetailActivity.class);
+        intent = new Intent(getContext(), DetailActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString(storageProvider.LANGUO_KEY_NAME, termKey);
         intent.putExtras(bundle);

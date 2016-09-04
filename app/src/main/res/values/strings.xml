@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Languo</string>
+    <string name="newlanguo">newLanguo</string>
+    <string name="new_languo_action">New languo action.</string>
 </resources>

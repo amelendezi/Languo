@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.amelendez.lgo.activities.NewLanguoActivity" />
-        <activity android:name="com.amelendez.lgo.activities.LanguoDetailActivity"></activity>
+        <activity android:name="com.amelendez.lgo.activities.DetailActivity"></activity>
     </application>
 
 </manifest>
