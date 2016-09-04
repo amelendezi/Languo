@@ -22,7 +22,8 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:src="@mipmap/ic_edit"
-            android:background="@android:color/transparent" />
+            android:background="@android:color/transparent"
+            android:onClick="editAction" />
     </RelativeLayout>
 
     <TextView
