@@ -10,12 +10,15 @@
         android:layout_height="25dp"
         android:layout_gravity="center_horizontal" />
 
-    <EditText
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editTermEditText"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@color/colorPrimary" />
+        android:text="Lekker"
+        android:id="@+id/editTermTextView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="28dp" />
 
     <Space
         android:layout_width="match_parent"

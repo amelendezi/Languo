@@ -6,7 +6,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -87,10 +86,11 @@ public class DetailActivity extends AppCompatActivity {
         int width = (int)(getResources().getDisplayMetrics().widthPixels*0.98);
         dialog.getWindow().setLayout(width, ActionBar.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setTitle("Edit meaning or example");
 
         // Load state into dialog
-        EditText editTerm = (EditText) dialog.findViewById(R.id.editTermEditText);
-        editTerm.setText(term.getText());
+        TextView termTextView = (TextView) dialog.findViewById(R.id.editTermTextView);
+        termTextView.setText(term.getText().toString());
         EditText editDefinition = (EditText) dialog.findViewById(R.id.editDefinitionEditText);
         editDefinition.setText(definition.getText());
         EditText editExample = (EditText) dialog.findViewById(R.id.editExampleEditView);
@@ -108,12 +108,9 @@ public class DetailActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                EditText changedTerm = (EditText) v.findViewById(R.id.editTermEditText);
-                languo.setTerm(changedTerm.getText().toString());
-                EditText changedDefinition = (EditText) v.findViewById(R.id.editDefinitionEditText);
+                EditText changedDefinition = (EditText) dialog.findViewById(R.id.editDefinitionEditText);
                 languo.setDefinition(changedDefinition.getText().toString());
-                EditText changedExample = (EditText) v.findViewById(R.id.editExampleEditView);
+                EditText changedExample = (EditText) dialog.findViewById(R.id.editExampleEditView);
                 languo.setExample(changedExample.getText().toString());
                 storageProvider.UpdateLanguo(languo);
                 RenderView();
