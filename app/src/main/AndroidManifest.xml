@@ -8,15 +8,16 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.amelendez.lgo.activities.MainActivity">
+        <activity android:name="com.amelendez.lgo.activities.NewLanguoActivity" />
+        <activity android:name="com.amelendez.lgo.activities.DetailActivity" />
+        <activity
+            android:name="com.amelendez.lgo.activities.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.amelendez.lgo.activities.NewLanguoActivity" />
-        <activity android:name="com.amelendez.lgo.activities.DetailActivity"></activity>
     </application>
-
 </manifest>
