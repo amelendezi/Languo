@@ -1,5 +1,6 @@
 package com.amelendez.lgo.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,11 +13,32 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
+import com.amelendez.lgo.adapters.LanguoListAdapter;
 import com.amelendez.lgo.languo.R;
+import com.amelendez.lgo.storage.api.StorageProvider;
+import com.amelendez.lgo.storage.dao.Languo;
+
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
+    private ListView listView;
+    private List<Languo> languos;
+    private ArrayAdapter<Languo> adapter;
+    private StorageProvider storageProvider;
+
+    private void Initialize()
+    {
+        listView = (ListView) findViewById(R.id.mainListView);
+        storageProvider = new StorageProvider(this.getBaseContext());
+        RenderListView();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +59,12 @@ public class HomeActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        Initialize();
     }
 
     @Override
@@ -86,10 +109,6 @@ public class HomeActivity extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
@@ -99,5 +118,26 @@ public class HomeActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        RenderListView();
+    }
+
+
+    public void newLanguoAction(View view) {
+        Intent i = new Intent(getApplicationContext(), NewLanguoActivity.class);
+        startActivity(i);
+    }
+
+    private void RenderListView()
+    {
+        languos = storageProvider.GetAllLanguos();
+        adapter = new LanguoListAdapter(this, languos);
+        listView = (ListView) findViewById(R.id.mainListView);
+        listView.setAdapter(adapter);
     }
 }
