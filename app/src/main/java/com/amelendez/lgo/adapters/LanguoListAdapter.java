@@ -24,6 +24,9 @@ public class LanguoListAdapter extends ArrayAdapter<Languo> {
 
     private LayoutInflater viewInflater;
     private StorageProvider storageProvider;
+    private TextView term;
+    private TextView definition;
+    private Languo languo;
 
     public LanguoListAdapter(Context context, List<Languo> data) {
        super(context, R.layout.list_view_item, data);
@@ -42,11 +45,11 @@ public class LanguoListAdapter extends ArrayAdapter<Languo> {
         }
 
         // Get the item in the adapter
-        Languo languo = getItem(position);
+        languo = getItem(position);
 
         // Get the item views
-        TextView term = (TextView) view.findViewById(R.id.item_termTextView);
-        TextView definition = (TextView) view.findViewById(R.id.item_definitionTextView);
+        term = (TextView) view.findViewById(R.id.item_termTextView);
+        definition = (TextView) view.findViewById(R.id.item_definitionTextView);
         ImageButton deleteButton = (ImageButton) view.findViewById(R.id.item_deleteImageButton);
 
         // Set listener behavior for navigation to detail activity

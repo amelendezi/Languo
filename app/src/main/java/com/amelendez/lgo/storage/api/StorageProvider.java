@@ -9,6 +9,8 @@ import com.amelendez.lgo.storage.dao.Languo;
 import com.amelendez.lgo.storage.dao.LanguoDao;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class StorageProvider {
@@ -30,6 +32,7 @@ public class StorageProvider {
 
     public void SaveLanguo(final Languo languo)
     {
+        SetInsertTimestamps(languo);
         languoDao.insert(languo);
     }
 
@@ -46,7 +49,7 @@ public class StorageProvider {
 
     public List<Languo> GetAllLanguos()
     {
-        List<Languo> languos = languoDao.queryBuilder().list();
+        List<Languo> languos = languoDao.queryBuilder().orderDesc(LanguoDao.Properties.ChangedDate).list();
         if(languos == null)
         {
             return new ArrayList<Languo>();
@@ -56,6 +59,7 @@ public class StorageProvider {
 
     public void UpdateLanguo(Languo updateLanguo)
     {
+        SetUpdateTimestamps(updateLanguo);
         languoDao.update(updateLanguo);
     }
 
@@ -70,5 +74,20 @@ public class StorageProvider {
                 context.getApplicationContext(), DB_NAME, null);
         SQLiteDatabase db = devOpenHelper.getWritableDatabase();
         devOpenHelper.onUpgrade(db,0,0);
+    }
+
+    private void SetInsertTimestamps(Languo languo)
+    {
+        Calendar calendar = Calendar.getInstance();
+        Date currentDate = calendar.getTime();
+        languo.setInsertDate(currentDate);
+        languo.setChangedDate(currentDate);
+    }
+
+    private void SetUpdateTimestamps(Languo languo)
+    {
+        Calendar calendar = Calendar.getInstance();
+        Date currentDate = calendar.getTime();
+        languo.setChangedDate(currentDate);
     }
 }
