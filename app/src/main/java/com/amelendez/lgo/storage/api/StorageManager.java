@@ -86,4 +86,89 @@ public class StorageManager {
         List<Languo> languos = languoDao.queryBuilder().where(LanguoDao.Properties.Value.eq(value)).orderAsc(LanguoDao.Properties.Id).list();
         return languos.get(0);
     }
+
+    public int UpdateLanguo(Languo languo)
+    {
+        if(languo.getId() > 0)
+        {
+            languoDao.update(languo);
+            return 1;
+        }
+        return -1;
+    }
+
+    public int CascadeDeleteLanguoByValue(String value)
+    {
+        Languo languoToDelete = GetLanguoByValue(value);
+        if(languoToDelete != null)
+        {
+            // Delete the meaning of the languo
+            List<Meaning> meaningsToDelete = languoToDelete.getMeanings();
+            final int size = meaningsToDelete.size();
+            for (int i = 0; i < size; i++)
+            {
+                Meaning meaningToDelete = meaningsToDelete.get(i);
+                if(CascadeDeleteMeaning(meaningToDelete) < 0 )
+                {
+                    return -1;
+                }
+            }
+
+            // Delete the languo
+            languoDao.delete(languoToDelete);
+
+            // Successful path
+            return 1;
+        }
+        return -1;
+    }
+    
+    public int CascadeDeleteMeaning(Meaning meaningToDelete)
+    {
+        if(meaningToDelete != null) {
+            // Delete the context description
+            if (DeleteContextDescription(meaningToDelete.getContextDescription()) < 0) {
+                return -1;
+            }
+
+            // Delete the examples
+            List<Example> examplesToDelete = meaningToDelete.getExamples();
+            final int size = examplesToDelete.size();
+            for (int i = 0; i < size; i++) {
+                Example exampleToDelete = examplesToDelete.get(i);
+                if(DeleteExample(exampleToDelete) < 0)
+                {
+                    return -1;
+                }
+            }
+
+            // Successful path
+            return 1;
+        }
+        return -1;
+    }
+
+    public int DeleteContextDescription(ContextDescription contextDescriptionToDelete)
+    {
+        if(contextDescriptionToDelete != null)
+        {
+            contextDescriptionDao.delete(contextDescriptionToDelete);
+
+            // Successful path
+            return 1;
+        }
+        return -1;
+    }
+
+    public int DeleteExample(Example exampleToDelete)
+    {
+        if(exampleToDelete != null)
+        {
+            exampleDao.delete(exampleToDelete);
+
+            // Successful path
+            return 1;
+        }
+        return -1;
+    }
 }
